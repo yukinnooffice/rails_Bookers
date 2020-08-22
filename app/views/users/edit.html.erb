@@ -1,2 +1,28 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
+<%= form_for @user do |f| %>
+
+<div class="row-lg-4" style="background-color: orange;">
+  <%=f.label :username , "ユーザ名"   %>
+  <%= f.text_field :username %>
+
+
+<div class="col-lg-" style="background-color: pink;">
+  <%=f.label :email %>
+  <%= f.text_field :email %>
+</div>
+
+<div class="field">
+  <%=f.label :introduction %>
+  <%= f.text_field :introduction %>
+</div>
+
+<div class="field">
+  <%=f.label :profile_image %>
+  <%= f.attachment_field :profile_image %>
+</div>
+
+<%= f.submit %>
+
+<% end %>
+</div>
