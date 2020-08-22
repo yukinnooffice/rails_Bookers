@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers3</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+       <header align="right">
+          <li>Bookers</li>
+        <% if user_signed_in? %>
+          <li class="glyphicon glyphicon-home home">
+            <%= link_to "Home", new_user_registration_path %>
+          </li>
+          <li class="glyphicon glyphicon-user user">
+            <%= link_to "Users", users_path %>
+          </li>
+           <li class="glyphicon glyphicon-book books">
+          <%= link_to "Books", books_path %>
+          </li>
+           <li class="glyphicon glyphicon-log-out logout">
+            <%= link_to "logout", destroy_user_session_path, method: :delete %>
+          </li>
+        <!-- ログインしていない時-->
+        <% else %>
+          <li class="glyphicon glyphicon-edit sign_up">
+             <%= link_to "sign up", new_user_registration_path %>
+          </li>
+          <li class="glyphicon glyphicon-log-in sign_in">
+             <%= link_to "login", new_user_session_path %>
+          </li>
+          <li class="glyphicon glyphicon-link about">
+             <%= link_to "About", about_path %>
+          </li>
+          <li class="glyphicon glyphicon-home home">
+             <%= link_to "Home", new_user_session_path %>
+          </li>
+        <% end %>
+     </header>
+
+  <body>
+      <% if flash[:notice] %>
+      <div class="notification is-info">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="notification is-danger">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
