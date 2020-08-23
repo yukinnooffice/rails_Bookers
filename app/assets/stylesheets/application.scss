@@ -20,7 +20,7 @@
   margin:0; padding:0;
 }
 header {
-  height: 50px;
+  height: 30px;
   width: 100%;
   padding: 15px 0;
   background-color: black;
@@ -30,3 +30,9 @@ header {
 li {
      display: inline-block;
 }
+
+.profile_image {
+ height: 100px;
+ border-radius: 50%;
+}
+

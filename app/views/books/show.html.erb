@@ -1,2 +1,15 @@
 <h1>Books#show</h1>
 <p>Find me in app/views/books/show.html.erb</p>
+
+
+  <%=@book.title%>
+  <div><%= @book.body %></div>
+<%if @book.user.id == current_user.id%>
+ <%= link_to "編集" , edit_book_path(@book)%>
+<% end %>
+<p>作者</P>
+  <%= @book.user.username %>s
+  <%= @book.user.introduction %>
+  <%= link_to user_path(@book.user_id) do %>
+    <%= @book.user.username %>さんのページへ
+  <% end %>

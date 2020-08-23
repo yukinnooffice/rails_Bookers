@@ -1,9 +1,16 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
-<% @users.each do |user| %>
-<%=link_to user_path(user) do %>
-<%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
-<%= user.username %>
 
-<% end %>
-<% end %>
+<div class="col-lg-6" style="background-color: pink;">
+  <h1>Users#index</h1>
+  <p>Find me in app/views/users/index.html.erb</p>
+</div>
+
+
+  <% @users.each do |user| %>
+  <div class="col-lg-6" style="background-color: orange;">
+  <%=link_to user_path(user) do %>
+  <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %>
+  <%= user.username %>
+
+  <% end %>
+  <% end %>
+  </div>
