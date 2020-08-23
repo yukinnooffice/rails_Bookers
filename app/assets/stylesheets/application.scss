@@ -19,8 +19,15 @@
 * {
   margin:0; padding:0;
 }
+
+
+.profile_image {
+ height: 30px;
+ border-radius: 50%;
+}
+
 header {
-  height: 30px;
+  height: 50px;
   width: 100%;
   padding: 15px 0;
   background-color: black;
@@ -30,9 +37,3 @@ header {
 li {
      display: inline-block;
 }
-
-.profile_image {
- height: 100px;
- border-radius: 50%;
-}
-

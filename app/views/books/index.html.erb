@@ -1,23 +1,32 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
-<div class="col-lg-6" style="background-color: orange;">
-<%= form_for @book do |f| %>
-  <%=f.label :title %>
-  <%=f.text_field :title %>
-
-  <%=f.label :body %>
-  <%=f.text_area :body %>
-
-  <%=f.submit %>
-
-<% end %>
-</div>
+<div class="container" style="background-color: orange;">
   <div class="col-lg-6" style="background-color: orange;">
-  <% @books.each do |book| %>
-  <%=link_to book_path(book) do %>
-  <p><%= book.title %>
-  <%= book.body %></p>
+    <h1>Books#index</h1>
+    <%= form_for @book do |f| %>
+      <%=f.label :title %>
+      <%=f.text_field :title %>
 
-  <% end %>
-  <% end %>
+      <%=f.label :body %>
+      <%=f.text_area :body %>
+
+      <%=f.submit %>
+    <% end %>
   </div>
+  <div class="col-lg-6" style="background-color: orange;">
+    <p>Find me in app/views/books/index.html.erb</p>
+    <% @books.each do |book| %>
+      
+        <%= attachment_image_tag book.user, :profile_image ,fallback: "no_image.jpg" %>
+          <p>
+           <%=link_to book_path(book) do %>
+            <%= book.title %>
+            <% end %>
+            <%= book.body %>
+          </p>
+          <%= book.user.username %>
+          <time>
+            <%= book.updated_at.strftime("%Y-%m-%d %H:%M") %>
+          </time>
+      
+    <% end %>
+  </div>
+</div>

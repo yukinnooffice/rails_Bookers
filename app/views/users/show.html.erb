@@ -1,7 +1,87 @@
-<%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
-<%= @user.username %>
-<%= @user.introduction %>
-<% if @user.id == current_user.id %>
-<%= @user.email %>
-<%= link_to "編集", edit_user_path(@user)%>
-<% end %>
+ <%#= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
+<%#= @user.username %>
+<%#= @user.introduction %>
+<%# if @user.id == current_user.id %>
+<%#= @user.email %>
+<%#= link_to "編集", edit_user_path(@user)%>
+<%# end %>
+
+<%#= form_for @book do |f| %>
+<%#=f.label :title %>
+<%#=f.text_field :title %>
+<%#=f.label :body %>
+<%#=f.text_area :body %>
+<%#=f.submit %>
+
+
+<div class="body">
+  <div class="container">
+<!--   <p id="notice">Welcome! You have signed up successfully.</p> -->
+    <div class="row">
+      <div class="col-xs-3">
+      <h2>User info</h2>
+      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
+      <table class="table">
+        <tbody>
+          <tr>
+    	    <th>name</th>
+    	    <th><%= @user.username %></th>
+          </tr>
+          <tr>
+    	    <th>introduction</th>
+    	    <th><%= @user.introduction %></th>
+          </tr>
+
+          <tr>
+          	<% if @user.id == current_user.id %>
+    	      <th>email</th>
+    	      <th><%= @user.email %></th>
+    	    <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <a class="col-xs-12 btn btn-default glyphicon glyphicon-wrench " <%= link_to "編集", edit_user_path(@user)%></a>
+      </div>
+
+      <h2>New book</h2>
+      <%= form_for @book do |f| %>
+        <div class="field row">
+          <label for="book_title">Title</label>
+        <%=f.text_field :title %>
+        </div>
+
+        <div class="field row">
+          <label for="book_opinion">Opinion</label>
+          <t class="col-xs-12 " ><%=f.text_area :body%></t>
+        </div>
+        <div class="actions row">
+         <i value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book"<%=f.submit %>Create Book</i>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="col-xs-9">
+      <h2>Books</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
