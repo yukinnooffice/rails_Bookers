@@ -1,5 +1,5 @@
-<div class="container" style="background-color: orange;">
-  <div class="col-lg-6" style="background-color: orange;">
+<div class="container" style="background-color:;">
+  <div class="col-lg-6" style="background-color: ;">
     <h1>Books#index</h1>
     <%= form_for @book do |f| %>
       <%=f.label :title %>
@@ -11,8 +11,8 @@
       <%=f.submit %>
     <% end %>
   </div>
-  <div class="col-lg-6" style="background-color: orange;">
-    <p>Find me in app/views/books/index.html.erb</p>
+  <div class="col-lg-6" style="background-color:;">
+
     <% @books.each do |book| %>
       
         <%= attachment_image_tag book.user, :profile_image ,fallback: "no_image.jpg" %>

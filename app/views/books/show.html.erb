@@ -1,7 +1,20 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container" style="background-color: ;">
+  <div class="col-lg-6" style="background-color: ;">
+
+    <%= form_for @books do |f| %>
+      <%=f.label :title %>
+      <%=f.text_field :title %>
+
+      <p><%=f.label :body %>
+      <%=f.text_area :body %></p>
+
+      <%=f.submit %>
+    <% end %>
+  </div>
 
 
+
+<div class="col-lg-6" style="background-color:;">
   <%=@book.title%>
   <div><%= @book.body %></div>
 <%if @book.user.id == current_user.id%>
@@ -13,3 +26,5 @@
   <%= link_to user_path(@book.user_id) do %>
     <%= @book.user.username %>さんのページへ
   <% end %>
+</div>
+</div>
