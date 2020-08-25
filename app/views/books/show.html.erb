@@ -1,30 +1,83 @@
-<div class="container" style="background-color: ;">
-  <div class="col-lg-6" style="background-color: ;">
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+        <h2>User info</h2>
+         <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
+        <table class="table">
+          <tbody>
+            <tr>
+      	    <th>name</th>
+      	    <th><%= @book.user.name %></th>
+            </tr>
+            <tr>
+      	    <th>introduction</th>
+      	    <th><%= @book.user.introduction %></th>
+            </tr>
 
-    <%= form_for @books do |f| %>
-      <%=f.label :title %>
-      <%=f.text_field :title %>
+            <tr>
+            	<% if @book.user.id == current_user.id %>
+      	      <th>email</th>
+      	      <th><%= @book.user.email %></th>
+      	    <% end %>
+            </tr>
+          </tbody>
+        </table>
+        <h2>New book</h2>
+        <%= form_for @books do |f| %>
+          <div class="field row">
+            <label for="book_title">Title</label>
+            <%=f.text_field :title %>
+          </div>
+          <div class="field row">
+            <label for="book_opinion">Opinion</label>
+            <p class="col-xs-12 " ><%= f.text_area :body%></p>
+          </div>
+          <div class="actions row">
+            <%= f.submit class: "btn btn-primary col-xs-12" %>
+          </div>
+        <% end %>
+      </div>
 
-      <p><%=f.label :body %>
-      <%=f.text_area :body %></p>
-
-      <%=f.submit %>
-    <% end %>
+      <div class="col-xs-9">
+        <h2>Book detail</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td><%= attachment_image_tag @book.user, :profile_image, fallback: "no_image.jpg" %>
+                  <%=link_to @book.user.name, user_path(@book.user) %>
+                </td>
+                <td><%=link_to  @book.title , book_path(@book)%></td>
+                <td><%= @book.body%></td>
+                <%if @book.user.id == current_user.id%>
+                <td> <%= link_to "Edit" , edit_book_path(@book)%></td>
+                <td> <%=link_to "Destroy",book_path(@book) , method: :delete , data: {confirm:"削除しますか"} %></td>
+                <% end %>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-
-
-
-<div class="col-lg-6" style="background-color:;">
-  <%=@book.title%>
-  <div><%= @book.body %></div>
-<%if @book.user.id == current_user.id%>
- <%= link_to "編集" , edit_book_path(@book)%>
-<% end %>
-<p>作者</P>
-  <%= @book.user.username %>s
-  <%= @book.user.introduction %>
-  <%= link_to user_path(@book.user_id) do %>
-    <%= @book.user.username %>さんのページへ
-  <% end %>
 </div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+

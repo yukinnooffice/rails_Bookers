@@ -7,7 +7,7 @@
         <tbody>
           <tr>
             <th>name</th>
-            <th><%= @user.username %></th>
+            <th><%= @user.name %></th>
           </tr>
           <tr>
             <th>introduction</th>
@@ -51,13 +51,15 @@
         </thead>
         <tbody>
           <% @users.each do |user| %>
-            <%=link_to user_path(user) do %>
               <tr>
-                <td><%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg" %></td>
-                <td><%= user.username %></td>
-                <td><%= link_to "show" , user_path(user)%></td>
+                <td>
+                  <%=link_to user_path(user) do %>
+                    <%= attachment_image_tag user, :profile_image ,fallback: "no_image.jpg" %>
+                  <%end%>
+                </td>
+                <td><%= user.name %></td>
+                <td><%= link_to "Show" , user_path(user)%></td>
               </tr>
-            <% end %>
           <% end %>
         </tbody>
       </table>

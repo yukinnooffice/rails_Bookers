@@ -1,3 +1,14 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="body">
   <div class="container">
     <p id="notice"></p>
@@ -5,8 +16,8 @@
     <%= form_for @user do |f| %>
       <div class="col-lg-6" style="background-color: white;">
       <p>
-        <%=f.label :username , "ユーザ名"%>
-        <%= f.text_field :username %>
+        <%=f.label :name , "ユーザ名"%>
+        <%= f.text_field :name %>
       </p>
 
       <p>

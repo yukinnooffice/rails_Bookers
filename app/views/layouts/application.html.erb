@@ -25,17 +25,17 @@
           </li>
         <!-- ログインしていない時-->
         <% else %>
+          <li class="glyphicon glyphicon-home home">
+             <%= link_to "Home",root_path %>
+          </li>
+          <li class="glyphicon glyphicon-link about">
+             <%= link_to "About", about_path %>
+          </li>
           <li class="glyphicon glyphicon-edit sign_up">
              <%= link_to "sign up", new_user_registration_path %>
           </li>
           <li class="glyphicon glyphicon-log-in sign_in">
              <%= link_to "login", new_user_session_path %>
-          </li>
-          <li class="glyphicon glyphicon-link about">
-             <%= link_to "About", about_path %>
-          </li>
-          <li class="glyphicon glyphicon-home home">
-             <%= link_to "Home", new_user_session_path %>
           </li>
         <% end %>
      </header>
@@ -52,6 +52,9 @@
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
+
+
+
     <%= yield %>
   </body>
 

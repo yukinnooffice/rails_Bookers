@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   root to: "homes#index"
 
-  get 'homes/about' => 'homes#about' , as: 'about'
+  get 'home/about' => 'homes#about' , as: 'about'
 end

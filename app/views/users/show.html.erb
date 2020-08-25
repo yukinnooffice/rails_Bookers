@@ -1,5 +1,5 @@
  <%#= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
-<%#= @user.username %>
+<%#= @user.name %>
 <%#= @user.introduction %>
 <%# if @user.id == current_user.id %>
 <%#= @user.email %>
@@ -25,7 +25,7 @@
           <tbody>
             <tr>
       	    <th>name</th>
-      	    <th><%= @user.username %></th>
+      	    <th><%= @user.name %></th>
             </tr>
             <tr>
       	    <th>introduction</th>
@@ -42,19 +42,19 @@
         </table>
 
         <div class="row">
-        <%= link_to "編集", edit_user_path(@user) , class= "col-xs-12 btn btn-default glyphicon glyphicon-wrench "%>
+        <%= link_to "", edit_user_path(@user),class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench "%>
         </div>
 
         <h2>New book</h2>
         <%= form_for @book do |f| %>
           <div class="field row">
             <label for="book_title">Title</label>
-            <%=f.text_field :title %>
+             <%=f.text_field :title %>
           </div>
 
           <div class="field row">
             <label for="book_opinion">Opinion</label>
-            <t class="col-xs-12 " ><%= f.text_area :body%></t>
+            <p class="col-xs-12 " ><%= f.text_area :body%></p>
           </div>
           <div class="actions row">
             <%#= f.submit :class=> "btn btn-primary col-xs-12" %>
@@ -75,15 +75,15 @@
           </thead>
           <tbody>
             <% @user.books.each do |book|%>
-             <%=link_to book_path(book) do %>
               <tr>
-                <td><%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %></td>
-
-                  <td><%= book.title %></td>
-                
+                <td>
+                  <%=link_to user_path do %>
+                    <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
+                  <% end %>
+                </td>
+                <td><%=link_to  book.title , book_path(book)%></td>
                 <td><%= book.body%></td>
               </tr>
-              <% end %>
             <% end %>
           </tbody>
         </table>
@@ -92,13 +92,4 @@
   </div>
 </div>
 
-<% @user.books.each do |book|%>
-  <%= book.title %>
-  <%= book.body%>
-  <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
-  <% if @user.id == current_user.id %>
-    <%=link_to "詳細" , book_path(book)%>
-    <%=link_to "編集", edit_book_path(book)%>
-    <%=link_to "削除",book_path(book) , method: :delete , data: {confirm:"削除しますか"} %>
-  <% end %>
-<% end %>
+
