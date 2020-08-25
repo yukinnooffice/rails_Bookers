@@ -33,16 +33,15 @@
       </div>
 
       <div class="col-lg-6" style="background-color: white;">
-      <p>
-        <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
-        <%=f.label :profile_image %>
-        <%= f.attachment_field :profile_image %>
-      </p>
-
-      <p>
-        <%= f.submit %>
-      </p>
-    <% end %>
+        <p>
+          <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg" %>
+          <%=f.label :profile_image %>
+          <%= f.attachment_field :profile_image %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
       </div>
+    <% end %>
   </div>
 </div>

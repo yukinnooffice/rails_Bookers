@@ -19,28 +19,27 @@
 	      <h1>Editing Book</h1>
         <%=  form_for @book do |f| %>
           <div class="field row">
-          <label for="book_title">Title</label>
-          <div class="col-xs-12 book_title"><%= f.text_field :title%>
-          </div>
-
-          <div class="field row">
-            <label for="book_opinion">Opinion</label>
-          <div class="col-xs-12 book_body" >
-            <%= f.text_field :body %></div>
-          </div>
-          <div class="actions row">
-            <div class="btn btn-primary col-xs-12" data-disable-with="Update Book">
-              <%= f.submit %>
+            <label for="book_title">Title</label>
+              <p><%= f.text_field :title%></p>
+            <div class="field row">
+              <label for="book_opinion">Opinion</label>
+              <p><%= f.text_area :body %></p>
+            </div>
+            <div class="actions row">
+              <%= f.submit :class=>"btn btn-primary col-xs-12"%>
+            </div>
+        <% end %>
+            <div class="row">
+  	          <%= link_to "Show", book_path %>|
+  	          <%= link_to "Back", books_path %>
             </div>
           </div>
-	        <li><%= link_to "Show", book_path %></li> |
-	        <li><%= link_to "Back", books_path %></li>
-        </div>
-      <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+      </div>
     </div>
   </div>
 </div>
-<% end %>
+
 
 
 <!--
